@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'voice_sync_screen.dart';
+import 'storyboard_screen.dart';
+import 'export_screen.dart';
 
 void main() {
   runApp(const SRPExplainApp());
@@ -59,33 +62,41 @@ class _DashboardScreenState extends State<DashboardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Create New Video Banner Button
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 14),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
-                gradient: LinearGradient(
-                  colors: [
-                    const Color(0xFF8B5CF6).withOpacity(0.2),
-                    Colors.black,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const VoiceSyncScreen()),
+                );
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF8B5CF6).withOpacity(0.2),
+                      Colors.black,
+                    ],
+                  ),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.auto_awesome, color: Color(0xFF8B5CF6)),
+                    SizedBox(width: 8),
+                    Text(
+                      'Create New Video',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.auto_awesome, color: Color(0xFF8B5CF6)),
-                  SizedBox(width: 8),
-                  Text(
-                    'Create New Video',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
               ),
             ),
             const SizedBox(height: 25),
@@ -153,7 +164,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         selectedItemColor: const Color(0xFF8B5CF6),
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
-        currentIndex: 2, // Dashboard Focused
+        currentIndex: 2,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.folder_open),
@@ -176,7 +187,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // Language Chip Builder Widget
   Widget _buildLanguageChip(String lang, String flag) {
     bool isSelected = selectedLanguage == lang;
     return ChoiceChip(
