@@ -43,17 +43,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         elevation: 0,
         title: const Text(
           'SRP EXPLAIN AI',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1.2,
-            fontSize: 18,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.2, fontSize: 18),
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () {},
-          ),
+          IconButton(icon: const Icon(Icons.person_outline), onPressed: () {}),
         ],
       ),
       body: SingleChildScrollView(
@@ -61,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Create New Video Banner Button
+            // Create Video Button -> Goes to VoiceSyncScreen
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -76,10 +69,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: const Color(0xFF8B5CF6).withOpacity(0.5)),
                   gradient: LinearGradient(
-                    colors: [
-                      const Color(0xFF8B5CF6).withOpacity(0.2),
-                      Colors.black,
-                    ],
+                    colors: [const Color(0xFF8B5CF6).withOpacity(0.2), Colors.black],
                   ),
                 ),
                 child: const Row(
@@ -89,30 +79,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     SizedBox(width: 8),
                     Text(
                       'Create New Video',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
                     ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 25),
-
-            // Script Section Title
             const Text(
               'Write or paste your script here...',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
             ),
             const SizedBox(height: 12),
-
-            // Text Input Box
             Container(
               decoration: BoxDecoration(
                 color: const Color(0xFF16161E),
@@ -132,19 +110,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             const SizedBox(height: 25),
-
-            // Select Voiceover Language Title
             const Text(
               'Select Voiceover Language',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-                fontWeight: FontWeight.w500,
-              ),
+              style: TextStyle(fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 12),
-
-            // Language Selection Chips
             Row(
               children: [
                 _buildLanguageChip('English', '🇺🇸'),
@@ -157,8 +127,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-
-      // Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF16161E),
         selectedItemColor: const Color(0xFF8B5CF6),
@@ -166,22 +134,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         type: BottomNavigationBarType.fixed,
         currentIndex: 2,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.folder_open),
-            label: 'Projects',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_border),
-            label: 'Templates',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.show_chart),
-            label: 'Dashboard',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Account',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.folder_open), label: 'Projects'),
+          BottomNavigationBarItem(icon: Icon(Icons.star_border), label: 'Templates'),
+          BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Account'),
         ],
       ),
     );
@@ -198,15 +154,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         color: isSelected ? Colors.white : Colors.grey,
         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
       ),
-      side: BorderSide(
-        color: isSelected ? const Color(0xFF8B5CF6) : Colors.white12,
-      ),
+      side: BorderSide(color: isSelected ? const Color(0xFF8B5CF6) : Colors.white12),
       onSelected: (selected) {
-        if (selected) {
-          setState(() {
-            selectedLanguage = lang;
-          });
-        }
+        if (selected) setState(() => selectedLanguage = lang);
       },
     );
   }
