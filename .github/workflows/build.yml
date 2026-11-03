@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: ./srp-explain-ai
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,6 +24,7 @@ jobs:
           channel: 'stable'
 
       - name: Install dependencies
+        keys: ${{ runner.os }}-flutter-*
         run: flutter pub get
 
       - name: Build APK
@@ -36,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: srp-explain-ai-apk
-          path: srp-explain-ai/build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
