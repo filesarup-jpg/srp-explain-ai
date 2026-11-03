@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'storyboard_screen.dart';
 
 class VoiceSyncScreen extends StatelessWidget {
   const VoiceSyncScreen({super.key});
@@ -48,7 +49,12 @@ class VoiceSyncScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const StoryboardScreen()),
+                  );
+                },
                 child: const Text(
                   'Generate Storyboard',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
