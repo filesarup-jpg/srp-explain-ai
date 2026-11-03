@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'export_screen.dart';
 
 class StoryboardScreen extends StatelessWidget {
   const StoryboardScreen({super.key});
@@ -24,9 +25,9 @@ class StoryboardScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildStoryboardCard('Scene 1: Person Drinking (Human)', 'assets/scene1.png'),
-                  _buildStoryboardCard('Scene 2: Detailed Stomach View (Anatomy)', 'assets/scene2.png'),
-                  _buildStoryboardCard('Scene 3: Cellular Level Motion (CGI)', 'assets/scene3.png'),
+                  _buildStoryboardCard('Scene 1: Person Drinking (Human)'),
+                  _buildStoryboardCard('Scene 2: Detailed Stomach View (Anatomy)'),
+                  _buildStoryboardCard('Scene 3: Cellular Level Motion (CGI)'),
                 ],
               ),
             ),
@@ -48,7 +49,12 @@ class StoryboardScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ExportScreen()),
+                  );
+                },
                 child: const Text(
                   'Confirm Storyboard & Render',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
@@ -61,7 +67,7 @@ class StoryboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStoryboardCard(String title, String imagePlaceholder) {
+  Widget _buildStoryboardCard(String title) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -72,7 +78,6 @@ class StoryboardScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Scene Image Preview Box
           Container(
             height: 140,
             width: double.infinity,
